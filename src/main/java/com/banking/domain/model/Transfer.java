@@ -1,11 +1,8 @@
 package com.banking.domain.model;
 
-import lombok.Getter;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-// Entidad de dominio — representa una transferencia entre cuentas
-@Getter
 public class Transfer {
 
     private final String id;
@@ -24,11 +21,13 @@ public class Transfer {
         this.status = TransferStatus.PENDIENTE;
     }
 
-    public void complete() {
-        this.status = TransferStatus.COMPLETADA;
-    }
+    public String getId() { return id; }
+    public String getSourceAccountId() { return sourceAccountId; }
+    public String getTargetAccountId() { return targetAccountId; }
+    public Money getAmount() { return amount; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public TransferStatus getStatus() { return status; }
 
-    public void fail() {
-        this.status = TransferStatus.FALLIDA;
-    }
+    public void complete() { this.status = TransferStatus.COMPLETADA; }
+    public void fail() { this.status = TransferStatus.FALLIDA; }
 }

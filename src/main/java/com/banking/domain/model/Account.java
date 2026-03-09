@@ -1,10 +1,7 @@
 package com.banking.domain.model;
 
-import lombok.Getter;
 import java.util.UUID;
 
-// Entidad de dominio — representa una cuenta bancaria
-@Getter
 public class Account {
 
     private final String id;
@@ -21,12 +18,14 @@ public class Account {
         return new Account(UUID.randomUUID().toString(), owner, initialBalance);
     }
 
-    // Descuenta dinero de la cuenta
+    public String getId() { return id; }
+    public String getOwner() { return owner; }
+    public Money getBalance() { return balance; }
+
     public void debit(Money amount) {
         this.balance = this.balance.subtract(amount);
     }
 
-    // Añade dinero a la cuenta
     public void credit(Money amount) {
         this.balance = this.balance.add(amount);
     }

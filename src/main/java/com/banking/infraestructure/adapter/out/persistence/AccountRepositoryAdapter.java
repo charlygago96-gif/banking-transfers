@@ -3,16 +3,18 @@ package com.banking.infraestructure.adapter.out.persistence;
 import com.banking.domain.model.Account;
 import com.banking.domain.model.Money;
 import com.banking.domain.port.out.AccountRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 @Component
-@RequiredArgsConstructor
 public class AccountRepositoryAdapter implements AccountRepository {
 
     private final AccountJpaRepository jpaRepository;
+
+    public AccountRepositoryAdapter(AccountJpaRepository jpaRepository) {
+        this.jpaRepository = jpaRepository;
+    }
 
     @Override
     public Optional<Account> findById(String id) {

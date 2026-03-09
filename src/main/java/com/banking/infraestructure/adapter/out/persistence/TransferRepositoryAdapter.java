@@ -2,16 +2,16 @@ package com.banking.infraestructure.adapter.out.persistence;
 
 import com.banking.domain.model.Transfer;
 import com.banking.domain.port.out.TransferRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
-
 @Component
-@RequiredArgsConstructor
 public class TransferRepositoryAdapter implements TransferRepository {
 
     private final TransferJpaRepository jpaRepository;
+
+    public TransferRepositoryAdapter(TransferJpaRepository jpaRepository) {
+        this.jpaRepository = jpaRepository;
+    }
 
     @Override
     public Transfer save(Transfer transfer) {

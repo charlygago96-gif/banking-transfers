@@ -1,15 +1,10 @@
 package com.banking.infraestructure.adapter.out.persistence;
 
 import jakarta.persistence.*;
-import lombok.*;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "accounts")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class AccountEntity {
 
     @Id
@@ -17,4 +12,18 @@ public class AccountEntity {
     private String owner;
     private BigDecimal balance;
     private String currency;
+
+    public AccountEntity() {}
+
+    public AccountEntity(String id, String owner, BigDecimal balance, String currency) {
+        this.id = id;
+        this.owner = owner;
+        this.balance = balance;
+        this.currency = currency;
+    }
+
+    public String getId() { return id; }
+    public String getOwner() { return owner; }
+    public BigDecimal getBalance() { return balance; }
+    public String getCurrency() { return currency; }
 }
